@@ -8,4 +8,4 @@ export function mainmiddleware(req: NextRequest) {
 }
 
 
-export default withAuth(mainmiddleware, [ "/admin/home", "/auth/masuk", "/pembayaran", "/admin/pengguna", "/admin/pembayaran",])
+export default withAuth(mainmiddleware, [ "/admin/home", "/auth/masuk", "/pembayaran", "/pengaduan", "/pengaduan/riwayat-pengaduan", "/admin/pengguna", "/admin/pembayaran", "/admin/detailpengguna/[slug]"])

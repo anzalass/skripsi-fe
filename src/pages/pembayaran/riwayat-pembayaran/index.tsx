@@ -9,16 +9,6 @@ type RiwayatPembayaranType = {
   id_pembayaran: string;
   email: string;
   name: string;
-  // status: string;
-  // alamat: string;
-  // url: string;
-  // periode_pemakaian: string;
-  // paket_langganan: string;
-  // harga_langganan: number;
-  // total_amount: number;
-  // metode_pembayaran: number;
-  // created_at: string;
-  // tanggal_bayar: string;
 };
 
 export default function RiwayatPembayaran() {
@@ -31,13 +21,13 @@ export default function RiwayatPembayaran() {
       setTransaksi(response.data);
     }
     fetchData();
-  }, []);
+  }, [data?.user?.email]);
   // console.log(transaksi);
 
   return (
     <div className="min-h-screen">
       <div className="w-full">
-        <div className="w-[60%] mx-auto">
+        <div className="xl:w-[60%] lg:w-[65%] md:w-[75%] w-[90%] mx-auto">
           <div className="w-[90%] mx-auto mt-5 text-xl font-[500] mb-5">
             <h1>Riwayat Pembayaran</h1>
           </div>
@@ -45,11 +35,11 @@ export default function RiwayatPembayaran() {
             <div className="w-[90%] mx-auto p-6 bg-white  shadow-md  rounded-lg border-[1px] border-gray-200  dark:bg-white dark:border-gray-400">
               <img
                 src="https://mediagrasi.net/wp-content/uploads/2023/02/Asset-2@2x-2-e1676605352394.png"
-                className="h-12"
+                className="xl:h-12 lg:h-8 md:h-7 h-6"
                 alt="Flowbite Logo"
               />
               <a href="/pembayaran/riwayat-pembayaran/abca">
-                <h5 className="mb-2 mt-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-black">
+                <h5 className="xl:mb-2 lg:mb-1 md:mb-1 mb-0 mt-2 xl:text-2xl lg:text-xl md:text-[17px] text-[15px] font-semibold tracking-tight text-gray-900 dark:text-black">
                   {d?.id_pembayaran}
                 </h5>
               </a>

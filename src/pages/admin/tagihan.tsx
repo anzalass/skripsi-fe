@@ -53,8 +53,8 @@ export default function Tagihan(props: { tagihan: TagihanType[] }) {
       {open ? <Sidebar open={open} setOpen={setOpen} active={active} /> : null}
       {/* Template Admin */}
       <div className="w-[94%] mx-auto  h-[100vh] pt-3">
-        <div className="w-[97%] mx-auto bg-slate-200  h-[70px] rounded-md p-3 shadow-lg">
-          <h1 className="text-xl font-[500] pl-3 mt-2">Selamat Datang Admin</h1>
+        <div className="w-[97%] mx-auto  h-[70px]  p-3  border-b-[1px] border-black">
+          <h1 className="text-xl font-[500] pl-3 mt-2">Tagihan</h1>
           <div className="w-full mt-[60px]">
             {tagihan ? <TabelTagihan tagihan={tagihan} /> : null}
           </div>

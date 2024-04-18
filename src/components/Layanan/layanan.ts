@@ -1,7 +1,8 @@
 export const layanan = [
     {
         name: "Pemasangan Baru",
-        logo : "/wifi.png"
+        logo : "/wifi.png",
+        navigasi : "https://wa.me/6287741842915"
     },
     {
         name: "Pembayaran Bulanan",
@@ -9,11 +10,13 @@ export const layanan = [
         navigasi : "/pembayaran"
     },
     {
-        name: "Assistant AI",
-        logo : "/customer-service.png"
+        name: "Customer Service",
+        logo: "/customer-service.png",
+        navigasi : "/chat"
     },
     {
         name: "Pengaduan",
-        logo : "/no-internet.png"
+        logo: "/no-internet.png",
+        navigasi : "/pengaduan"
     },
 ]

@@ -15,8 +15,7 @@ export default function AddUser(props: { open: boolean; setOpen: any }) {
   const { render, setRender } = useContext(RenderTableUser);
 
   const TambahUser = async (e: any) => {
-    console.log("render", render);
-
+    setRender(true);
     e.preventDefault();
     await axios
       .post(`${server}create-pelanggan`, {
@@ -42,7 +41,7 @@ export default function AddUser(props: { open: boolean; setOpen: any }) {
         });
       });
 
-    // setRender(false);
+    setRender(false);
   };
 
   useEffect(() => {

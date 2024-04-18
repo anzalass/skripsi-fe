@@ -16,6 +16,9 @@ const disableNavbar = [
   "/admin/pembayaran",
   "/admin/pengguna",
   "/admin/tagihan",
+  "/admin/detailpengguna/[slug]",
+  "/chat",
+  "/admin/pengaduan",
 ];
 
 export default function AppShell(props: AppShellProps) {

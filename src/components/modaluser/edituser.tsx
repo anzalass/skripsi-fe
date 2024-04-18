@@ -86,7 +86,7 @@ export default function Edituser(props: { setOpen: any; id: any }) {
           size={25}
         />
         <h1 className="text-xl mt-4 font-[500]">Edit Pelanggan {props.id}</h1>
-        <h1>{}</h1>
+
         <div className="w-full p-3 mt-5">
           <div className="mb-5">
             <input
