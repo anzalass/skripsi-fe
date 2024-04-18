@@ -5,12 +5,12 @@ import Link from "next/link";
 
 export default function Layanan() {
   return (
-    <div className="w-11/12 mx-auto  mt-7 mb-[100px]  ">
-      <h1 className="text-3xl text-center font-[500] mb-5">Layanan</h1>
-      <div className="w-[85%] mx-auto sm:grid sm:grid-cols-2 md:grid md:grid-cols-4 lg:grid lg:grid-cols-4 grid grid-cols-2 xl:gap-[50px]  lg:gap-[50px] gap-[10px]  bg-white">
+    <div className="w-11/12 mx-auto  mt-7 mb-[40px]  ">
+      <h1 className="text-2xl text-center font-[700] mb-5">LAYANAN</h1>
+      <div className="w-[90%] mx-auto grid grid-cols-2 bg-slate-50 400px:grid-cols-2 500px:grid-cols-2 700px:grid-cols-4 xl:gap-[50px]  lg:gap-[50px] gap-[10px]  ">
         {layanan.map((d, i) => (
           <div
-            className="lg:w-[200px] xl:w-[250px] md:w-[150px] shadow-lg  xl:-ml-5 lg:-ml-5 md:-ml-2 sm:-ml-2   rounded-lg p-2 pb-[30px] xl:h-[250px] lg:h-[200px] md:h-[150px] h-[130px]  bg-white "
+            className=" w-[140px] 400px:w-[155px] 500px:w-[175px] 600px:w-[230px] 700px:w-[140px] 800px:w-[160px] 900px:w-[170px] 1000px:w-[180px] 1100px:w-[200px] 1300px:w-[250px] shadow-lg  mx-auto   rounded-lg p-2 pb-[30px] xl:h-[250px] lg:h-[200px] md:h-[150px] h-[130px]  bg-white "
             key={i}
           >
             <Link href={d.navigasi || ""}>
@@ -24,7 +24,7 @@ export default function Layanan() {
                 />
               </div>
               <div className="text-center">
-                <h1 className="xl:text-xl lg:text-[16px] md:text-[15px] text-sm sm:text-[18px] font-[500]">
+                <h1 className="xl:text-xl lg:text-[16px] md:text-[15px] text-sm sm:text-[14px] font-[500]">
                   {d.name}
                 </h1>
               </div>

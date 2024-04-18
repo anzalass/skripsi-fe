@@ -10,20 +10,20 @@ const popins = Poppins({
 export default function BerandaAdmin() {
   return (
     <div
-      className={` ${popins.className} w-full grid grid-cols-3 mx-auto mt-[20px]`}
+      className={` ${popins.className} w-full grid xl:grid-cols-3  lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-x-5 mx-auto mt-[20px]`}
     >
       {berandaadmin.map((d, i) => (
         <div
           key={i}
-          className={`w-[390px] p-0 mx-auto flex h-[120px] gap-1 mb-3 rounded-sm relative shadow-xl border-[1px] ${d.warna}`}
+          className={`xl:w-[370px] lg:w-[280px] md:-[150px] mr-2 ml-2 p-0 mx-auto flex h-[120px] gap-1  mb-3 rounded-sm relative shadow-xl border-[1px] ${d.warna}`}
         >
-          <div className="w-[60%]">
-            <h1 className="text-[15px] ml-4 text-black mt-[13px] font-[500]">
+          <div className="w-[50%]">
+            <h1 className="xl:text-[15px] lg:text-[15px] md:text-[14px] text-[11px] ml-4 text-black mt-[13px] font-[500]">
               {d.name}
             </h1>
           </div>
-          <div className="w-[40%]">
-            <h1 className="text-[30px] ml-8 text-black mt-[10px] font-[500]">
+          <div className="w-[50%]">
+            <h1 className="xl:text-[30px] lg:text-[20px] md:text-[18px] text-[20px] ml-8 text-black mt-[10px] font-[500]">
               {d.jumlah}
             </h1>
           </div>

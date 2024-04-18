@@ -63,7 +63,6 @@ export default function Pembayaran() {
     setTagihan(res.data);
     setFormData({
       id_pelanggan: res?.data[0]?.id_pelanggan,
-      id_akun: data?.user?.id,
       periode_pemakaian: combined,
       email: data?.user?.email,
       name: res?.data[0]?.name,
@@ -91,7 +90,7 @@ export default function Pembayaran() {
 
   return (
     <div className="w-full min-h-screen mb-[50px]">
-      <div className="w-[50%] mx-auto flex justify-between mt-[70px]">
+      <div className="xl:w-[50%] lg:w-[60%] md:w-[70%] w-[90%] mx-auto flex justify-between mt-[70px]">
         <Link href={"/"}>
           <div className="">
             <button className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
@@ -111,13 +110,14 @@ export default function Pembayaran() {
           </div>
         </Link>
       </div>
-      <div className="w-[50%]  p-5 mx-auto mt-[20px] rounded-md bg-zinc-300">
+      <div className="xl:w-[50%] lg:w-[60%] md:w-[70%] w-[90%] p-5 mx-auto mt-[20px] rounded-md bg-zinc-300">
         <h1 className="text-xl ml-0 font-[500]">Periksa Tagihan</h1>
         <div className=" mt-3 flex relative">
           <input
             type="number"
             onChange={(e: any) => setId_pelanggan(parseInt(e.target.value))}
             value={id_pelanggan}
+            min={1}
             className="px-3 w-[90%] h-[50px] rounded-md border-[1px] border-black "
             placeholder="Masukan ID Pelangganmu..."
           />
@@ -125,13 +125,15 @@ export default function Pembayaran() {
             onClick={fetchData}
             className="px-3 h-[50px] w-[15%] bg-blue-500 rounded-md text-white"
           >
-            <IoSearchSharp className="absolute top-[16px]" size={20} />{" "}
-            <span className="ml-3 font-[500]">Cari</span>
+            <IoSearchSharp className="absolute top-[16px] " size={20} />{" "}
+            <span className="ml-3 font-[500] hidden md:block lg:block xl:block">
+              Cari
+            </span>
           </button>
         </div>
       </div>
       {tagihan?.length > 0 ? (
-        <div className="w-[50%] mt-10 mx-auto border-[1px] border-black rounded-md ">
+        <div className="xl:w-[50%] lg:w-[60%] md:w-[70%] w-[90%] mt-10 mx-auto border-[1px] border-black rounded-md ">
           <div className="w-full bg-zinc-300 h-[50px] p-3">
             <h1 className="font-bold">Detail Tagihan</h1>
           </div>
@@ -212,7 +214,7 @@ export default function Pembayaran() {
           </div>
         </div>
       ) : (
-        <div className="w-[50%] mt-10 mx-auto border-2 border-[1px]  border-black rounded-md">
+        <div className="xl:w-[50%] lg:w-[60%] md:w-[70%] w-[90%] mt-10 mx-auto border-[1px]  border-black rounded-md">
           <div className="w-full bg-zinc-300 h-[50px] p-3">
             <h1 className="font-bold">Detail Tagihan</h1>
           </div>

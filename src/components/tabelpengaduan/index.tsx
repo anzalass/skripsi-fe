@@ -11,27 +11,30 @@ import { RenderTableUser } from "@/context/renderTableUser";
 import CreateAllInvoice from "../modaluser/createallinvoice";
 import { IoArrowForwardCircle } from "react-icons/io5";
 import { useRouter } from "next/router";
+import EditStatusPengaduan from "../modaleditstatuspengaduan";
 
-type PelangganType = {
+type PengaduanType = {
   no: number;
   id: number;
-  name: string;
+  nama: string;
+  email: string;
+  no_whatsapp: string;
   status: string;
   alamat: string;
   paket_langganan: string;
-  harga_langganan: any;
+  waktu_kunjungan: string;
   created_at: string;
 };
 
 export let edit = false;
 
-export default function TabelUser({
-  pelanggan,
+export default function TabelPengaduan({
+  pengaduan,
 }: {
-  pelanggan: PelangganType[];
+  pengaduan: PengaduanType[];
 }) {
   const [gridKey, setGridKey] = useState(0);
-  const [row, setRows] = useState<PelangganType[]>([]);
+  const [row, setRows] = useState<PengaduanType[]>([]);
   const [open, setOpen] = useState<any>(false);
   const [edit, setEdit] = useState<any>(false);
   const { push } = useRouter();
@@ -87,6 +90,13 @@ export default function TabelUser({
       flex: 0.5,
     },
     {
+      field: "nama",
+      headerName: "Nama",
+      headerClassName: "bg-slate-200 text-center font-abc",
+      minWidth: 150,
+      flex: 0.7,
+    },
+    {
       field: "id",
       headerName: "ID User",
       headerClassName: "bg-slate-200 text-center font-abc",
@@ -94,10 +104,17 @@ export default function TabelUser({
       flex: 0.7,
     },
     {
-      field: "name",
-      headerName: "Nama",
+      field: "email",
+      headerName: "Email",
       headerClassName: "bg-slate-200 text-center font-abc",
-      minWidth: 150,
+      minWidth: 100,
+      flex: 0.7,
+    },
+    {
+      field: "no_whatsapp",
+      headerName: "WhatsApp",
+      headerClassName: "bg-slate-200 text-center font-abc",
+      minWidth: 100,
       flex: 0.7,
     },
     {
@@ -115,22 +132,8 @@ export default function TabelUser({
       flex: 0.7,
     },
     {
-      field: "paket_langganan",
-      headerName: "Paket Langganan",
-      headerClassName: "bg-slate-200 text-center font-abc",
-      minWidth: 150,
-      flex: 0.7,
-    },
-    {
-      field: "harga_langganan",
-      headerName: "Harga Langganan",
-      headerClassName: "bg-slate-200 text-center font-abc",
-      minWidth: 150,
-      flex: 0.7,
-    },
-    {
-      field: "created_at",
-      headerName: "Tanggal Gabung",
+      field: "waktu_kunjungan",
+      headerName: "Waktu Kunjungan",
       headerClassName: "bg-slate-200 text-center font-abc",
       minWidth: 150,
       flex: 0.7,
@@ -146,13 +149,6 @@ export default function TabelUser({
       renderCell: (params: any) => {
         return (
           <div className="flex">
-            <button className="mr-4">
-              <BsTrash3
-                color="red"
-                size={20}
-                onClick={() => HandleTrigerDelete(params.id)}
-              />
-            </button>
             <button className="">
               <BiEditAlt
                 onClick={() => HandleTrigerEdit(params.id)}
@@ -174,17 +170,16 @@ export default function TabelUser({
   ];
 
   const InsertData = () => {
-    const data = pelanggan?.map((p, index) => ({
+    const data: any = pengaduan?.map((p, index) => ({
       no: index + 1,
       id: p.id,
-      name: p.name,
+      nama: p.nama,
+      email: p.email,
+      no_whatsapp: p.no_whatsapp,
       status: p.status,
       alamat: p.alamat,
+      waktu_kunjungan: p.waktu_kunjungan,
       paket_langganan: p.paket_langganan,
-      harga_langganan: p.harga_langganan.toLocaleString("id-ID", {
-        style: "currency",
-        currency: "IDR",
-      }),
       created_at: p.created_at,
     }));
     setRows(data); // Mengatur rows menggunakan setRows
@@ -192,7 +187,7 @@ export default function TabelUser({
 
   useEffect(() => {
     InsertData();
-  }, [render, pelanggan]);
+  }, [render, pengaduan]);
 
   // Change `row` to `rows` in the DataGrid component
   return (
@@ -204,23 +199,14 @@ export default function TabelUser({
       ) : null}
       {edit ? (
         <div className=" w-full mx-auto ">
-          <Edituser id={id} setOpen={setEdit} />
+          <EditStatusPengaduan id={id} setOpen={setEdit} />
         </div>
       ) : null}
 
       <div className="w-full relative">
         <div className="flex justify-between w-full ">
           <div className="flex justify-between w-full">
-            <div className="flex ">
-              <div className="">
-                <button
-                  onClick={() => setOpen(true)}
-                  className="border-2 h-[40px] px-2 rounded-md"
-                >
-                  Tambah Pengguna {"+"}
-                </button>
-              </div>
-            </div>
+            <div className="flex "></div>
           </div>
         </div>
         <div className="mt-7">

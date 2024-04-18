@@ -5,15 +5,18 @@ import Jumbotron from "@/components/Jumbotron";
 import Layanan from "@/components/Layanan";
 import UnderNavbar from "@/components/UnderNavbar";
 import Footer from "@/components/Footer";
+import ProdukKami from "@/components/ProdukKami";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <div className="">
-      {/* <UnderNavbar /> */}
-      <Jumbotron />
-      <Layanan />
-    </div>
+    <>
+      <div className="">
+        <Jumbotron />
+        <Layanan />
+        <ProdukKami />
+      </div>
+    </>
   );
 }

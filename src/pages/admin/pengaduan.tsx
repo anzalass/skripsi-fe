@@ -1,32 +1,34 @@
 import Sidebar from "@/components/sidebar";
-import TabelUser from "@/components/tabeluser";
+import TabelPengaduan from "@/components/tabelpengaduan";
 import { RenderTableUser } from "@/context/renderTableUser";
 import { server } from "@/server";
 import { useContext, useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 
-type PelangganType = {
+type PengaduanType = {
   no: number;
   id: number;
-  name: string;
+  nama: string;
+  email: string;
+  no_whatsapp: string;
   status: string;
   alamat: string;
   paket_langganan: string;
-  harga_langganan: number;
+  waktu_kunjungan: string;
   created_at: string;
 };
 
-export default function Pengguna(props: { pengguna: PelangganType[] }) {
+export default function AdminPengaduan(props: { pengaduan: PengaduanType[] }) {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState(3);
+  const [active, setActive] = useState(5);
   const { render, setRender } = useContext(RenderTableUser);
-  const [pengguna, setPengguna] = useState(props.pengguna);
+  const [pengaduan, setPengaduan] = useState(props.pengaduan);
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch(`${server}all-pelanggan`);
+      const res = await fetch(`${server}pengaduan`);
       const response = await res.json();
-      setPengguna(response.data);
+      setPengaduan(response.data);
     }
     fetchData();
   }, [render]);
@@ -49,12 +51,12 @@ export default function Pengguna(props: { pengguna: PelangganType[] }) {
 
       <div className="w-[94%] mx-auto  h-[100vh] pt-3">
         <div className="w-[97%] mx-auto  h-[70px]  p-3  border-b-[1px] border-black">
-          <h1 className="text-xl font-[500] pl-3 mt-2">Pengguna</h1>
+          <h1 className="text-xl font-[500] pl-3 mt-2">Pengaduan</h1>
           <div className="w-full mt-[40px]">
-            {pengguna ? (
-              <TabelUser pelanggan={pengguna} />
+            {pengaduan ? (
+              <TabelPengaduan pengaduan={pengaduan} />
             ) : (
-              <p>Tidak ada data pengguna.</p>
+              <p>Tidak ada data pengaduan.</p>
             )}
           </div>
         </div>
@@ -62,14 +64,3 @@ export default function Pengguna(props: { pengguna: PelangganType[] }) {
     </div>
   );
 }
-
-// export async function getServerSideProps() {
-//   const res = await fetch("http://localhost:8000/all-pelanggan");
-//   const response = await res.json();
-
-//   return {
-//     props: {
-//       pengguna: response.data,
-//     },
-//   };
-// }

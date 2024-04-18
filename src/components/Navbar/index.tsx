@@ -127,45 +127,42 @@ export default function Navbar() {
           <div className="flex items-center">
             <ul className="grid grid-flow-col auto-cols-max gap-8 font-medium mt-0 text-sm">
               <li>
-                <a
-                  href="#"
-                  className="text-gray-900 dark:text-white hover:underline"
-                  aria-current="page"
-                >
-                  Beranda
-                </a>
+                <Link href={"/"}>
+                  <div
+                    className="text-gray-900 dark:text-white hover:underline"
+                    aria-current="page"
+                  >
+                    Beranda
+                  </div>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-900 dark:text-white hover:underline"
-                >
-                  Layanan
-                </a>
+                <Link href={"/"}>
+                  <div className="text-gray-900 dark:text-white hover:underline">
+                    Layanan
+                  </div>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-900 dark:text-white hover:underline"
-                >
-                  Tentang Kami
-                </a>
+                <Link href={"/tentangkami"}>
+                  <div className="text-gray-900 dark:text-white hover:underline">
+                    Tentang Kami
+                  </div>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-900 dark:text-white hover:underline"
-                >
-                  Produk Kami
-                </a>
+                <Link href={"/"}>
+                  <div className="text-gray-900 dark:text-white hover:underline">
+                    Produk Kami
+                  </div>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-gray-900 mr-4 dark:text-white hover:underline"
-                >
-                  Hubungi Kami
-                </a>
+                <Link href={"/hubungikami"}>
+                  <div className="text-gray-900 mr-4 dark:text-white hover:underline">
+                    Hubungi Kami
+                  </div>
+                </Link>
               </li>
             </ul>
           </div>
