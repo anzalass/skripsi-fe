@@ -5,6 +5,7 @@ import { RiCustomerService2Fill } from "react-icons/ri";
 import { LuRouter } from "react-icons/lu";
 import { GrArticle } from "react-icons/gr";
 import { MdLibraryBooks } from "react-icons/md";
+import { FaQuestion } from "react-icons/fa";
 export const sidebarlist = [
   {
     name: "Beranda",
@@ -31,6 +32,11 @@ export const sidebarlist = [
     name: "Pengaduan",
     icons: <RiCustomerService2Fill className="absolute left-3 top-2" />,
     link: "/admin/pengaduan",
+  },
+  {
+    name: "Faq",
+    icons: <FaQuestion className="absolute left-3 top-2" />,
+    link: "/admin/faq",
   },
   {
     name: "Pemasangan",

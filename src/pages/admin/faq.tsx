@@ -1,40 +1,33 @@
 import Sidebar from "@/components/sidebar";
-import TabelTagihan from "@/components/tabeltagihan";
+import TabelFaq from "@/components/tabelfaq";
 import { RenderTableUser } from "@/context/renderTableUser";
 import { server } from "@/server";
 import { useContext, useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 
-type TagihanType = {
+type FaqType = {
   no: number;
   id: number;
-  id_pelanggan: number;
-  name: string;
-  status: string;
+  question: string;
+  answer: string;
+  view: number;
   alamat: string;
-  paket_langganan: string;
-  harga_langganan: number;
-  bulan: string;
-  tahun: string;
-  periode_pemakaian: string;
   created_at: string;
 };
 
-export default function Tagihan(props: { tagihan: TagihanType[] }) {
+export default function Faq(props: { faq: FaqType[] }) {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState(4);
+  const [active, setActive] = useState(6);
   const { render, setRender } = useContext(RenderTableUser);
-  const [tagihan, setTagihan] = useState(props.tagihan);
-
+  const [faq, setFaq] = useState(props.faq);
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch(`${server}all-tagihan`);
+      const res = await fetch(`${server}faq`);
       const response = await res.json();
-      setTagihan(response.data);
+      setFaq(response.data);
     }
     fetchData();
   }, [render]);
-
   return (
     <div className="w-full">
       {/*  Template admin*/}
@@ -52,9 +45,9 @@ export default function Tagihan(props: { tagihan: TagihanType[] }) {
       {/* Template Admin */}
       <div className="w-[94%] mx-auto  h-[100vh] pt-3">
         <div className="w-[97%] mx-auto  h-[70px]  p-3  border-b-[1px] border-black">
-          <h1 className="text-xl font-[500] pl-3 mt-2">Tagihan</h1>
+          <h1 className="text-xl font-[500] pl-3 mt-2">Faq</h1>
           <div className="w-full mt-[60px]">
-            {tagihan ? <TabelTagihan tagihan={tagihan} /> : null}
+            {faq ? <TabelFaq faq={faq} /> : null}
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@ export default function Pembayaran() {
   const { data } = useSession();
   const { push } = useRouter();
   const [checkbox, setCheckbox] = useState(false);
-  const [id_pelanggan, setId_pelanggan] = useState<number>();
+  const [id_pelanggan, setId_pelanggan] = useState<string>("");
   const [tagihan, setTagihan] = useState<any[]>([]);
   const [pemakaian, setPemakaian] = useState<any[]>([]);
   const [subTotal, setSubTotal] = useState<any>(0);
@@ -63,13 +63,14 @@ export default function Pembayaran() {
     setTagihan(res.data);
     setFormData({
       id_pelanggan: res?.data[0]?.id_pelanggan,
-      periode_pemakaian: combined,
+      periode_pemakaian: combined || "",
       email: data?.user?.email,
       name: res?.data[0]?.name,
       paket_langganan: res?.data[0]?.paket_langganan,
       harga_langganan: res?.data[0]?.harga_langganan,
       alamat: res?.data[0]?.alamat,
       total_amount: totalHargaLangganan,
+      url: res?.data[0]?.url,
     });
     setPemakaian(res.data.pemakaian);
   }
@@ -84,6 +85,7 @@ export default function Pembayaran() {
     harga_langganan: 0,
     alamat: "",
     total_amount: 0,
+    url: "",
   });
 
   // }, [id_pelanggan]);
@@ -114,8 +116,8 @@ export default function Pembayaran() {
         <h1 className="text-xl ml-0 font-[500]">Periksa Tagihan</h1>
         <div className=" mt-3 flex relative">
           <input
-            type="number"
-            onChange={(e: any) => setId_pelanggan(parseInt(e.target.value))}
+            type="text"
+            onChange={(e: any) => setId_pelanggan(e.target.value)}
             value={id_pelanggan}
             min={1}
             className="px-3 w-[90%] h-[50px] rounded-md border-[1px] border-black "
@@ -146,6 +148,7 @@ export default function Pembayaran() {
                 </div>
                 <div className="w-[70%]">
                   <p className="text-end">{tagihan[0]?.id_pelanggan}</p>
+                  <p className="text-end">{formData.url}</p>
                 </div>
               </div>
               <hr className="px-5 mt-3 mx-auto w-[97%]" />

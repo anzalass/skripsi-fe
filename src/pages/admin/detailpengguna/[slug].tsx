@@ -3,6 +3,7 @@ import { server } from "@/server";
 import { DataGrid } from "@mui/x-data-grid";
 import { log } from "console";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { BiEditAlt } from "react-icons/bi";
@@ -363,7 +364,10 @@ export default function DetailPengguna(props: {
         </div>
       ) : (
         <div className="">
-          <button>back</button>
+          <h1>Youare not admin</h1>
+          <Link href={"/"}>
+            <button className="">back</button>
+          </Link>
         </div>
       )}
     </div>

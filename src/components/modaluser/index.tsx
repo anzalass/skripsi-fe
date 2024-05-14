@@ -1,11 +1,13 @@
 import { RenderTableUser } from "@/context/renderTableUser";
 import { server } from "@/server";
+import { idID } from "@mui/material/locale";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { FaWindowClose } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 export default function AddUser(props: { open: boolean; setOpen: any }) {
+  const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [alamat, setalamat] = useState("");
   const [paketLangganan, setPaketLangganan] = useState("");
@@ -19,6 +21,7 @@ export default function AddUser(props: { open: boolean; setOpen: any }) {
     e.preventDefault();
     await axios
       .post(`${server}create-pelanggan`, {
+        id: id,
         name: name,
         // status: status,
         alamat: alamat,
@@ -57,6 +60,15 @@ export default function AddUser(props: { open: boolean; setOpen: any }) {
         />
         <h1 className="text-xl mt-4 font-[500]">Tambah Pelanggan</h1>
         <div className="w-full p-3 mt-5">
+          <div className="mb-5">
+            <input
+              onChange={(e: any) => setId(e.target.value)}
+              type="text"
+              value={id}
+              className="h-[45px] rounded-lg w-full pl-3"
+              placeholder="ID"
+            />
+          </div>
           <div className="mb-5">
             <input
               onChange={(e: any) => setName(e.target.value)}
