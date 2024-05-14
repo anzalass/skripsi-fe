@@ -95,13 +95,7 @@ export default function DetailPengaduanPage() {
               Deskripsi
             </label>
             <div className="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
-              {pengaduan?.deskripsi} Lorem ipsum dolor sit, amet consectetur
-              adipisicing elit. Quis quasi, ea odit, animi quia repellat, eos
-              explicabo labore laboriosam inventore recusandae ratione?
-              Perspiciatis, sapiente modi. Et repellat libero ipsum consequatur
-              harum, quae at. Perferendis, consequatur maxime mollitia enim
-              asperiores velit, similique ipsa qui alias nemo iure ad odio saepe
-              ipsum.
+              {pengaduan?.deskripsi}
             </div>
           </div>
           <div className="">

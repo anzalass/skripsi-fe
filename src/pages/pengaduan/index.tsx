@@ -29,7 +29,7 @@ export default function PengaduanPage() {
   };
 
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [id, setId] = useState(0);
+  const [id, setId] = useState("");
   const [detailPelanggan, setDetailPelanggan] = useState<DetailPelanggan[]>([]);
   const [detailPelangganCard, setDetailPelangganCard] =
     useState<DetailPelanggan>({
