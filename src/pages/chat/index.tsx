@@ -1,4 +1,4 @@
-import Modalinsertid from "@/components/chat/modalinsertid";
+import Modalinsertid from "@/components/chat/modalinsertid1";
 import { server } from "@/server";
 import axios from "axios";
 import { useSession } from "next-auth/react";
