@@ -73,13 +73,21 @@ export default function Navbar() {
                       aria-labelledby="dropdownHoverButton"
                     >
                       <li onClick={() => signOut()}>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-500 dark:hover:text-white"
-                        >
+                        <a className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-500 dark:hover:text-white">
                           Sign out
                         </a>
                       </li>
+                      {data?.user?.role === "admin" ? (
+                        <Link href={"/admin/home"}>
+                          <li>
+                            <a className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-500 dark:hover:text-white">
+                              Dashboard Admin
+                            </a>
+                          </li>
+                        </Link>
+                      ) : (
+                        ""
+                      )}
                     </ul>
                   </div>
                 ) : null}

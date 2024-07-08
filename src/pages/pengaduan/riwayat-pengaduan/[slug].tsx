@@ -18,9 +18,43 @@ type CardPengaduan = {
 };
 
 export default function DetailPengaduanPage() {
+  const [status, setStatus] = useState("");
   const { data } = useSession();
   const router = useRouter();
   const [pengaduan, setPengaduan] = useState<CardPengaduan>();
+
+  const EditStatusPengajuan = async () => {
+    // setRender(true);
+    await axios
+      .put(`${server}editstatuspengaduan/${router.query.slug}`, {
+        status: status,
+      })
+      .then((res) => {
+        // setRender(true);
+        // props.setOpen(false);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // setRender(false);
+  };
+  const BatalkanPengajuan = async () => {
+    // setRender(true);
+    await axios
+      .put(`${server}editstatuspengaduan/${router.query.slug}`, {
+        status: "dibatalkan",
+      })
+      .then((res) => {
+        // setRender(true);
+        // props.setOpen(false);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // setRender(false);
+  };
 
   const GetPengaduanDetail = async () => {
     await axios
@@ -98,6 +132,35 @@ export default function DetailPengaduanPage() {
               {pengaduan?.deskripsi}
             </div>
           </div>
+          {data?.user?.role === "admin" &&
+          pengaduan?.status !== "dibatalkan" ? (
+            <div className="block">
+              <label
+                htmlFor="password"
+                className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Ubah Status
+              </label>
+              <select
+                name=""
+                id=""
+                onChange={(e: any) => setStatus(e.target.value)}
+                value={status}
+              >
+                <option value="">Pilih</option>
+                <option value="diproses">Diproses</option>
+                <option value="dalam perjalanan">Dalam Perjalanan</option>
+                <option value="sedang diperbaiki">Sedang Diperbaiki</option>
+                <option value="selesai">Selesai</option>
+              </select>
+              <button
+                className="underline text-white ml-4"
+                onClick={EditStatusPengajuan}
+              >
+                ubah
+              </button>
+            </div>
+          ) : null}
           <div className="">
             <label
               htmlFor="password"
@@ -106,13 +169,17 @@ export default function DetailPengaduanPage() {
               Status
             </label>
           </div>
-          <div className="w-full rounded-md bg-slate-50 p-1">
-            <StatusPengaduan status={pengaduan?.status || ""} />
-          </div>
+          {pengaduan?.status === "dibatalkan" ? (
+            <h1 className="text-red-500 font-bold">Dibatalkan</h1>
+          ) : (
+            <div className="w-full rounded-md bg-slate-50 p-1">
+              <StatusPengaduan status={pengaduan?.status || ""} />
+            </div>
+          )}
 
-          {pengaduan?.status === "diproses" ? (
+          {pengaduan?.status === "diproses" && data?.user?.role !== "admin" ? (
             <button
-              type="submit"
+              onClick={BatalkanPengajuan}
               className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Batalkan Pengaduan

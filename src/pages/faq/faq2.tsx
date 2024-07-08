@@ -21,7 +21,7 @@ export default function FAQpage() {
     GetAllFaq();
   }, []);
 
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(-1);
   const OpenFaq = (i: any) => {
     setActive(i === active ? null : i);
     console.log(active);
@@ -42,7 +42,7 @@ export default function FAQpage() {
       <div className="w-[90%] mx-auto items-end justify-end flex">
         <form className="w-[300px] mt-3 ">
           <label
-            // for="default-search"
+            htmlFor="default-search"
             className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
           >
             Search
@@ -70,7 +70,7 @@ export default function FAQpage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               id="default-search"
-              className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="block w-full p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Search FAQ...."
               required
             />
@@ -83,20 +83,22 @@ export default function FAQpage() {
           </div>
         </form>
       </div>
-      <div className="w-[90%] mx-auto">
+      <div className="w-[90%] mx-auto mt-10">
         {searchResult &&
           searchResult.map((f: any, i: any) => (
             <div
               key={i}
-              className="border-[1px] border-r-0 mt-1 border-t-0 border-l-0 p-2"
+              className="border-[1px] border-r-0 mt-1 border-t-0 w-full border-l-0 p-2 mb-3"
             >
               <h1
                 onClick={() => OpenFaq(i)}
-                className="font-[700] text-lg cursor-pointer"
+                className="font-[700] text-xl cursor-pointer"
               >
                 {f.question}
               </h1>
-              <p className={`${active === i ? "block" : "hidden"}`}>
+              <p
+                className={`${active === i ? "block" : "hidden"} text-lg mt-3`}
+              >
                 {f.answer}
               </p>
             </div>

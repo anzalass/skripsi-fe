@@ -158,7 +158,9 @@ export default function TabelPengaduan({
             </button>
             <button className="ml-2">
               <IoArrowForwardCircle
-                onClick={() => push(`/admin/detailpengguna/${params?.id}`)}
+                onClick={() =>
+                  push(`/pengaduan/riwayat-pengaduan/${params?.id}`)
+                }
                 color="blue"
                 size={20}
               />

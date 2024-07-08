@@ -12,7 +12,7 @@ export const layanan = [
     {
         name: "Customer Service",
         logo: "/customer-service.png",
-        navigasi : "/chat"
+        navigasi : "/chat/chatt"
     },
     {
         name: "Pengaduan",

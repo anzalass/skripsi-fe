@@ -278,7 +278,7 @@ export default function DetailPengguna(props: {
   }, [tagihan, pembayaran]);
 
   useEffect(() => {
-    if (data && data?.user?.role == "admin") {
+    if (data && data?.user?.role !== "admin") {
       push("/");
     }
   }, [query.slug]);

@@ -39,6 +39,11 @@ export const sidebarlist = [
     link: "/admin/faq",
   },
   {
+    name: "Dataset",
+    icons: <MdLibraryBooks className="absolute left-3 top-2" />,
+    link: "/admin/dataset",
+  },
+  {
     name: "Pemasangan",
     icons: <LuRouter className="absolute left-3 top-2" />,
     link: "/admin/pemasangan",
